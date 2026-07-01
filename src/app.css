@@ -1,0 +1,266 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ *  OnionHop — design tokens
+ *  Dark, focused "privacy tool" aesthetic. Violet brand pulled from the
+ *  OnionHop onion mark; layout, spacing and motion follow the calm,
+ *  refined structure of the NetFluss site. System type throughout.
+ * ------------------------------------------------------------------ */
+@theme {
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, 'Helvetica Neue',
+		Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+	--font-mono:
+		'SF Mono', ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, 'Liberation Mono',
+		monospace;
+
+	/* Violet brand scale — sampled from the OnionHop onion mark */
+	--color-brand-50: #f5f3ff;
+	--color-brand-100: #ede9fe;
+	--color-brand-200: #ddd6fe;
+	--color-brand-300: #c4b5fd;
+	--color-brand-400: #a78bfa;
+	--color-brand-500: #8b5cf6;
+	--color-brand-600: #7c3aed;
+	--color-brand-700: #6d28d9;
+	--color-brand-800: #5b21b6;
+	--color-brand-900: #4c1d95;
+	--color-brand-950: #2e1065;
+
+	/* Cyan — secondary accent for routing packets / live signals */
+	--color-signal-400: #22d3ee;
+	--color-signal-500: #06b6d4;
+
+	/* Ink / surfaces (dark) */
+	--color-ink: #f3f4f8;
+	--color-ink-soft: #c3c9d4;
+	--color-muted: #838b98;
+	--color-line: #262b35;
+	--color-line-soft: #1d222b;
+	--color-surface: #15181e;
+	--color-surface-2: #1b1f27;
+	--color-canvas: #0b0d11;
+
+	--radius-card: 1.25rem;
+
+	--shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px -14px rgba(0, 0, 0, 0.7);
+	--shadow-float: 0 2px 8px rgba(0, 0, 0, 0.45), 0 30px 70px -30px rgba(0, 0, 0, 0.85);
+	--glow-brand: 0 8px 30px -10px rgba(124, 58, 237, 0.5);
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		color-scheme: dark;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.001ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.001ms !important;
+		}
+	}
+
+	body {
+		background-color: var(--color-canvas);
+		color: var(--color-ink-soft);
+		font-family: var(--font-sans);
+		letter-spacing: -0.011em;
+	}
+
+	::selection {
+		background: var(--color-brand-500);
+		color: #fff;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		color: var(--color-ink);
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.tnum {
+		font-family: var(--font-mono);
+		font-variant-numeric: tabular-nums;
+		letter-spacing: -0.02em;
+	}
+
+	a {
+		text-underline-offset: 3px;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-brand-400);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+}
+
+@layer components {
+	.card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-line);
+		border-radius: var(--radius-card);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-weight: 590;
+		border-radius: 0.75rem;
+		padding: 0.7rem 1.15rem;
+		transition:
+			transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+			box-shadow 0.25s,
+			background-color 0.2s,
+			border-color 0.2s;
+		will-change: transform;
+	}
+	.btn:active {
+		transform: translateY(1px) scale(0.99);
+	}
+
+	.btn-primary {
+		color: #fff;
+		background: var(--color-brand-600);
+		box-shadow: var(--glow-brand);
+	}
+	.btn-primary:hover {
+		background: var(--color-brand-500);
+		transform: translateY(-1px);
+	}
+
+	.btn-ghost {
+		color: var(--color-ink);
+		background: var(--color-surface);
+		border: 1px solid var(--color-line);
+	}
+	.btn-ghost:hover {
+		border-color: var(--color-brand-500);
+		color: var(--color-brand-300);
+		transform: translateY(-1px);
+	}
+
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.8rem;
+		font-weight: 560;
+		padding: 0.32rem 0.7rem;
+		border-radius: 999px;
+		border: 1px solid var(--color-line);
+		background: var(--color-surface-2);
+		color: var(--color-muted);
+	}
+
+	.link-muted {
+		color: var(--color-muted);
+		transition: color 0.15s;
+	}
+	.link-muted:hover {
+		color: var(--color-brand-300);
+	}
+}
+
+/* ----- legal / about long-form prose ----- */
+.legal {
+	color: var(--color-ink-soft);
+	font-size: 0.97rem;
+	line-height: 1.72;
+}
+.legal h2 {
+	font-size: 1.35rem;
+	font-weight: 700;
+	margin-top: 2.4rem;
+	margin-bottom: 0.6rem;
+}
+.legal h3 {
+	font-size: 1.05rem;
+	font-weight: 650;
+	color: var(--color-ink);
+	margin-top: 1.6rem;
+	margin-bottom: 0.4rem;
+}
+.legal p {
+	margin-bottom: 0.9rem;
+}
+.legal ul {
+	margin: 0.4rem 0 1rem;
+	padding-left: 1.15rem;
+	list-style: disc;
+}
+.legal li {
+	margin-bottom: 0.4rem;
+}
+.legal a {
+	color: var(--color-brand-300);
+	text-decoration: underline;
+}
+.legal a:hover {
+	color: var(--color-brand-200);
+}
+.legal strong {
+	color: var(--color-ink);
+	font-weight: 650;
+}
+.legal .muted {
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+/* ----- one-shot entrance choreography (staggered via inline delay) ----- */
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.rise {
+	animation: rise 0.7s cubic-bezier(0.22, 0.85, 0.24, 1) both;
+}
+
+/* packets travelling along the hero routing graph edges */
+@keyframes dash {
+	to {
+		stroke-dashoffset: -1000;
+	}
+}
+@keyframes pulse-node {
+	0%,
+	100% {
+		opacity: 0.55;
+		transform: scale(0.92);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.08);
+	}
+}
+
+/* subtle grid backdrop used behind the hero */
+.grid-backdrop {
+	background-image:
+		linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 44px 44px;
+	mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 78%);
+}

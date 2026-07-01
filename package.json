@@ -1,0 +1,21 @@
+{
+  "name": "onionhop-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Marketing website for OnionHop — a privacy-first desktop client that routes traffic through Tor (Windows, Linux, macOS).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.8",
+    "@sveltejs/kit": "^2.15.1",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tailwindcss/vite": "^4.0.0",
+    "svelte": "^5.16.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.7"
+  }
+}
