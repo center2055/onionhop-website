@@ -60,7 +60,7 @@
 					rel="noreferrer"
 					class="mt-5 inline-flex items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] px-3 py-2 text-sm font-medium text-[var(--color-ink)] transition-colors hover:border-[var(--color-brand-500)]"
 				>
-					<Icon name="star" size={15} class="text-[var(--color-brand-400)]" />
+					<img src="{base}/kofi.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]" />
 					Support on Ko-fi
 				</a>
 			</div>
@@ -93,7 +93,7 @@
 			class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[var(--color-line)] pt-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center"
 		>
 			<p>
-				© {year} OnionHop ·
+				© {year} Rana GmbH ·
 				<a href={LICENSE_URL} target="_blank" rel="noreferrer" class="link-muted underline">GPL-3.0</a>
 			</p>
 			<p class="max-w-md sm:text-right">

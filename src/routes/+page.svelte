@@ -57,7 +57,11 @@
 		}
 	];
 
-	const engines = ['Classic (tor)', 'Arti', 'ArtiHop'];
+	const engines = [
+		{ label: 'Classic (tor)', href: 'https://gitlab.torproject.org/tpo/core/tor' },
+		{ label: 'Arti', href: 'https://gitlab.torproject.org/tpo/core/arti' },
+		{ label: 'ArtiHop', href: 'https://github.com/center2055/ArtiHop' }
+	];
 	const transports = ['obfs4', 'snowflake', 'webtunnel', 'conjure', 'meek', 'dnstt', 'vanilla'];
 	const platforms = [
 		{ icon: 'windows', label: 'Windows' },
@@ -83,18 +87,8 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="relative overflow-hidden">
-	<div class="grid-backdrop pointer-events-none absolute inset-0 -z-10"></div>
-	<div
-		class="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[520px] w-[820px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
-		style="background: radial-gradient(closest-side, rgba(124,58,237,0.55), transparent)"
-	></div>
-
 	<div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
 		<div class="rise">
-			<span class="chip mb-5">
-				<span class="h-1.5 w-1.5 rounded-full bg-[var(--color-signal-400)]"></span>
-				Free & open source · GPL-3.0
-			</span>
 			<h1 class="text-[2.6rem] font-bold leading-[1.05] sm:text-6xl">
 				Route your traffic through <span class="text-[var(--color-brand-400)]">Tor</span>, with
 				clear controls.
@@ -125,7 +119,6 @@
 
 		<div class="rise relative" style="animation-delay: 0.12s">
 			<div class="card relative overflow-hidden p-2">
-				<RoutingMotif class="pointer-events-none absolute inset-0 h-full w-full opacity-40" />
 				<button
 					class="group relative block w-full overflow-hidden rounded-[0.9rem]"
 					onclick={() => (lightbox = `${base}/GUI.png`)}
@@ -199,10 +192,6 @@
 				</div>
 			</div>
 			<div class="relative">
-				<div
-					class="pointer-events-none absolute inset-0 rounded-2xl opacity-40 blur-2xl"
-					style="background: radial-gradient(closest-side, rgba(34,211,238,0.35), transparent)"
-				></div>
 				<RoutingMotif class="relative w-full" />
 			</div>
 		</div>
@@ -265,8 +254,16 @@
 			</h3>
 			<ul class="mt-3 space-y-2">
 				{#each engines as e}
-					<li class="flex items-center gap-2 text-[var(--color-ink)]">
-						<Icon name="check" size={16} class="text-[var(--color-brand-400)]" />{e}
+					<li>
+						<a
+							href={e.href}
+							target="_blank"
+							rel="noreferrer"
+							class="group flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-brand-300)]"
+						>
+							<Icon name="check" size={16} class="text-[var(--color-brand-400)]" />{e.label}
+							<Icon name="external" size={12} stroke={1.8} class="ml-auto opacity-40 transition-opacity group-hover:opacity-80" />
+						</a>
 					</li>
 				{/each}
 			</ul>

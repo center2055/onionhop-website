@@ -16,7 +16,8 @@ export const KOFI_URL = 'https://ko-fi.com/center2055';
 export const FMHY_URL = 'https://fmhy.net/privacy';
 
 // Showcase walkthrough video (Gumlet embed).
-export const VIDEO_EMBED = 'https://play.gumlet.io/embed/699b37eb26981d8913807a3e?background=false';
+export const VIDEO_EMBED =
+	'https://play.gumlet.io/embed/6a19e2e81bc4884e66764e87?background=false&autoplay=false&loop=false';
 
 // GitHub stopped counting downloads for the deleted v2.x releases; add them back so the
 // public total reflects reality rather than only what the current releases report.

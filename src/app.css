@@ -137,7 +137,7 @@
 	.btn-primary {
 		color: #fff;
 		background: var(--color-brand-600);
-		box-shadow: var(--glow-brand);
+		box-shadow: var(--shadow-soft);
 	}
 	.btn-primary:hover {
 		background: var(--color-brand-500);
@@ -254,13 +254,4 @@
 		opacity: 1;
 		transform: scale(1.08);
 	}
-}
-
-/* subtle grid backdrop used behind the hero */
-.grid-backdrop {
-	background-image:
-		linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-	background-size: 44px 44px;
-	mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 78%);
 }

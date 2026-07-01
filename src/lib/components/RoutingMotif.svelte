@@ -25,10 +25,6 @@
 			<stop offset="0" stop-color="#7c3aed" />
 			<stop offset="1" stop-color="#22d3ee" />
 		</linearGradient>
-		<radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-			<stop offset="0" stop-color="#a78bfa" stop-opacity="0.9" />
-			<stop offset="1" stop-color="#a78bfa" stop-opacity="0" />
-		</radialGradient>
 	</defs>
 
 	<!-- static base edges -->
@@ -62,7 +58,6 @@
 	<!-- nodes -->
 	{#each nodes as n, i}
 		<g style="transform-box: fill-box; transform-origin: center; animation: pulse-node {3.4 + (i % 3) * 0.5}s ease-in-out infinite; animation-delay: {i * 0.3}s">
-			<circle cx={n.x} cy={n.y} r={n.r + 12} fill="url(#nodeGlow)" opacity="0.5" />
 			<circle
 				cx={n.x}
 				cy={n.y}
