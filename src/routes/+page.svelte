@@ -71,7 +71,7 @@
 
 	const shots = [
 		{ src: `${base}/GUI.png`, alt: 'OnionHop desktop app', label: 'Desktop app' },
-		{ src: `${base}/cli.svg`, alt: 'OnionHop command-line client', label: 'Command line' }
+		{ src: `${base}/cli.png`, alt: 'OnionHop command-line client', label: 'Command line' }
 	];
 </script>
 
