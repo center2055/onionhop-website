@@ -58,9 +58,9 @@
 					href={KOFI_URL}
 					target="_blank"
 					rel="noreferrer"
-					class="mt-5 inline-flex items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] px-3 py-2 text-sm font-medium text-[var(--color-ink)] transition-colors hover:border-[var(--color-brand-500)]"
+					class="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#ff5e5b] px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#ff4b47]"
 				>
-					<img src="{base}/kofi.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]" />
+					<Icon name="kofi" size={17} />
 					Support on Ko-fi
 				</a>
 			</div>
