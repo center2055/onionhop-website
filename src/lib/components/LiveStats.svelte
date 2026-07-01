@@ -2,17 +2,18 @@
 	import { onMount } from 'svelte';
 	import { releaseState, ensureReleases } from '$lib/stores/releases.svelte.js';
 	import { formatCount } from '$lib/github.js';
+	import { t } from '$lib/i18n/locale.svelte.js';
 
 	onMount(ensureReleases);
 
 	const stats = $derived([
-		{ label: 'Latest', value: releaseState.version || (releaseState.loaded ? '—' : '…') },
+		{ label: t('hero.latest'), value: releaseState.version || (releaseState.loaded ? '—' : '…') },
 		{
-			label: 'Downloads',
+			label: t('hero.downloads'),
 			value: releaseState.downloads != null ? formatCount(releaseState.downloads) : releaseState.loaded ? '—' : '…'
 		},
 		{
-			label: 'GitHub stars',
+			label: t('hero.stars'),
 			value: releaseState.stars != null ? formatCount(releaseState.stars) : releaseState.loaded ? '—' : '…'
 		}
 	]);

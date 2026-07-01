@@ -1,6 +1,7 @@
 <script>
 	import { base } from '$app/paths';
 	import Icon from './Icon.svelte';
+	import { t } from '$lib/i18n/locale.svelte.js';
 	import {
 		GITHUB_URL,
 		RELEASES_URL,
@@ -15,29 +16,29 @@
 
 	const cols = [
 		{
-			title: 'Product',
+			title: 'foot.product',
 			links: [
-				{ label: 'Features', href: `${base}/#features` },
-				{ label: 'Downloads', href: `${base}/#download` },
-				{ label: 'Screenshots', href: `${base}/#screenshots` },
-				{ label: 'Changelog', href: RELEASES_URL, external: true }
+				{ label: 'nav.features', href: `${base}/#features` },
+				{ label: 'nav.downloads', href: `${base}/#download` },
+				{ label: 'nav.screenshots', href: `${base}/#screenshots` },
+				{ label: 'foot.changelog', href: RELEASES_URL, external: true }
 			]
 		},
 		{
-			title: 'Resources',
+			title: 'foot.resources',
 			links: [
-				{ label: 'Blog', href: BLOG_URL, external: true },
-				{ label: 'Source', href: GITHUB_URL, external: true },
-				{ label: 'Issues', href: ISSUES_URL, external: true },
-				{ label: 'Discord', href: DISCORD_URL, external: true }
+				{ label: 'nav.blog', href: BLOG_URL, external: true },
+				{ label: 'foot.source', href: GITHUB_URL, external: true },
+				{ label: 'foot.issues', href: ISSUES_URL, external: true },
+				{ label: 'foot.discord', href: DISCORD_URL, external: true }
 			]
 		},
 		{
-			title: 'Company',
+			title: 'foot.company',
 			links: [
-				{ label: 'About', href: `${base}/about` },
-				{ label: 'Imprint', href: `${base}/imprint` },
-				{ label: 'Privacy', href: `${base}/privacy` }
+				{ label: 'foot.about', href: `${base}/about` },
+				{ label: 'foot.imprint', href: `${base}/imprint` },
+				{ label: 'foot.privacy', href: `${base}/privacy` }
 			]
 		}
 	];
@@ -52,7 +53,7 @@
 					<span class="text-[1.05rem] font-semibold tracking-tight text-[var(--color-ink)]">OnionHop</span>
 				</a>
 				<p class="mt-3 max-w-xs text-sm leading-relaxed text-[var(--color-muted)]">
-					A privacy-first desktop client that routes your traffic through Tor. Windows, Linux and macOS.
+					{t('foot.tagline')}
 				</p>
 				<a
 					href={KOFI_URL}
@@ -61,14 +62,14 @@
 					class="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#ff5e5b] px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#ff4b47]"
 				>
 					<Icon name="kofi" size={17} />
-					Support on Ko-fi
+					{t('foot.kofi')}
 				</a>
 			</div>
 
 			{#each cols as col}
 				<div>
 					<h4 class="text-[0.8rem] font-semibold uppercase tracking-wider text-[var(--color-muted)]">
-						{col.title}
+						{t(col.title)}
 					</h4>
 					<ul class="mt-4 space-y-2.5">
 						{#each col.links as l}
@@ -79,7 +80,7 @@
 									rel={l.external ? 'noreferrer' : undefined}
 									class="link-muted inline-flex items-center gap-1 text-sm"
 								>
-									{l.label}
+									{t(l.label)}
 									{#if l.external}<Icon name="external" size={12} stroke={1.8} class="opacity-45" />{/if}
 								</a>
 							</li>
@@ -96,8 +97,8 @@
 				© {year} Rana GmbH ·
 				<a href={LICENSE_URL} target="_blank" rel="noreferrer" class="link-muted underline">GPL-3.0</a>
 			</p>
-			<p class="max-w-md sm:text-right">
-				An independent project. Not affiliated with or endorsed by The Tor Project.
+			<p class="max-w-md sm:text-end">
+				{t('foot.disclaimer')}
 			</p>
 		</div>
 	</div>

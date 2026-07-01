@@ -12,6 +12,7 @@
 		PLATFORMS
 	} from '$lib/github.js';
 	import { RELEASES_URL } from '$lib/config.js';
+	import { t, tf } from '$lib/i18n/locale.svelte.js';
 
 	let channel = $state('stable');
 	let platformFilter = $state('all');
@@ -61,7 +62,7 @@
 	<div class="card flex flex-col p-6">
 		<div class="flex items-center gap-2 text-sm text-[var(--color-muted)]">
 			<Icon name={platIcon[myPlatform]} size={18} class="text-[var(--color-ink)]" />
-			Recommended for {platformLabel(myPlatform)}
+			{tf('dl.recommended', { platform: platformLabel(myPlatform) })}
 		</div>
 
 		{#if !releaseState.loaded}
@@ -70,24 +71,24 @@
 		{:else if featured}
 			<a href={featured.url} class="btn btn-primary mt-4 text-base">
 				<Icon name="download" size={18} />
-				Download for {platformLabel(myPlatform)}
+				{tf('dl.download_for', { platform: platformLabel(myPlatform) })}
 			</a>
 			<p class="tnum mt-3 text-sm text-[var(--color-muted)]">
 				{featured.name} · {formatBytes(featured.size)}
 			</p>
 		{:else if releaseState.ok}
 			<p class="mt-4 text-sm text-[var(--color-muted)]">
-				No {family === 'cli' ? 'CLI' : 'GUI'} build for {platformLabel(myPlatform)} in this release yet.
+				{tf('dl.no_build', { family: family === 'cli' ? 'CLI' : 'GUI', platform: platformLabel(myPlatform) })}
 			</p>
 			<a href={RELEASES_URL} target="_blank" rel="noreferrer" class="btn btn-ghost mt-4 text-sm">
-				Browse all releases
+				{t('dl.browse')}
 			</a>
 		{:else}
 			<p class="mt-4 text-sm text-[var(--color-muted)]">
-				Live data could not be loaded. You can still grab everything on GitHub.
+				{t('dl.failed')}
 			</p>
 			<a href={RELEASES_URL} target="_blank" rel="noreferrer" class="btn btn-primary mt-4 text-sm">
-				<Icon name="download" size={16} /> All releases
+				<Icon name="download" size={16} /> {t('dl.browse')}
 			</a>
 		{/if}
 
@@ -117,10 +118,10 @@
 				>
 			</div>
 
-			<div class="ml-auto inline-flex flex-wrap gap-1">
+			<div class="ms-auto inline-flex flex-wrap gap-1">
 				<button
 					class="chip {platformFilter === 'all' ? 'border-[var(--color-brand-500)] text-[var(--color-ink)]' : ''}"
-					onclick={() => (platformFilter = 'all')}>All</button
+					onclick={() => (platformFilter = 'all')}>{t('dl.all')}</button
 				>
 				{#each PLATFORMS as p}
 					<button
@@ -139,7 +140,7 @@
 				class="rounded-md px-3 py-1 font-medium transition-colors {channel === 'stable'
 					? 'bg-[var(--color-surface-2)] text-[var(--color-ink)]'
 					: 'text-[var(--color-muted)]'}"
-				onclick={() => (channel = 'stable')}>Stable</button
+				onclick={() => (channel = 'stable')}>{t('dl.stable')}</button
 			>
 			<button
 				disabled={!releaseState.prerelease}
@@ -147,7 +148,7 @@
 				'prerelease'
 					? 'bg-[var(--color-surface-2)] text-[var(--color-ink)]'
 					: 'text-[var(--color-muted)]'}"
-				onclick={() => releaseState.prerelease && (channel = 'prerelease')}>Pre-release</button
+				onclick={() => releaseState.prerelease && (channel = 'prerelease')}>{t('dl.prerelease')}</button
 			>
 		</div>
 
@@ -163,7 +164,7 @@
 				{/each}
 			{:else if filtered.length === 0}
 				<p class="py-8 text-center text-sm text-[var(--color-muted)]">
-					No files match this filter{channel === 'prerelease' ? ' in the current pre-release' : ''}.
+					{t('dl.nomatch')}
 				</p>
 			{:else}
 				{#each filtered as a}
@@ -179,7 +180,7 @@
 						<span class="min-w-0 flex-1">
 							<span class="tnum block truncate text-sm text-[var(--color-ink)]">{a.name}</span>
 							<span class="tnum text-xs text-[var(--color-muted)]">
-								{formatBytes(a.size)} · {formatCount(a.downloads)} downloads
+								{formatBytes(a.size)} · {formatCount(a.downloads)} {t('dl.downloads')}
 							</span>
 						</span>
 						<Icon

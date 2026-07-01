@@ -1,17 +1,19 @@
 <script>
 	import { base } from '$app/paths';
 	import Icon from './Icon.svelte';
+	import LangSwitcher from './LangSwitcher.svelte';
+	import { t } from '$lib/i18n/locale.svelte.js';
 	import { BLOG_URL, GITHUB_URL } from '$lib/config.js';
 
 	let open = $state(false);
 	let scrolled = $state(false);
 
 	const links = [
-		{ label: 'Features', href: `${base}/#features` },
-		{ label: 'Screenshots', href: `${base}/#screenshots` },
-		{ label: 'Downloads', href: `${base}/#download` },
-		{ label: 'Blog', href: BLOG_URL, external: true },
-		{ label: 'GitHub', href: GITHUB_URL, external: true }
+		{ key: 'nav.features', href: `${base}/#features` },
+		{ key: 'nav.screenshots', href: `${base}/#screenshots` },
+		{ key: 'nav.downloads', href: `${base}/#download` },
+		{ key: 'nav.blog', href: BLOG_URL, external: true },
+		{ key: 'nav.github', href: GITHUB_URL, external: true }
 	];
 
 	function onScroll() {
@@ -46,16 +48,17 @@
 					rel={l.external ? 'noreferrer' : undefined}
 					class="link-muted inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[0.92rem] font-medium hover:bg-white/5"
 				>
-					{l.label}
+					{t(l.key)}
 					{#if l.external}<Icon name="external" size={13} stroke={1.8} class="opacity-50" />{/if}
 				</a>
 			{/each}
 		</div>
 
 		<div class="flex items-center gap-2">
+			<LangSwitcher />
 			<a href="{base}/#download" class="btn btn-primary hidden text-sm sm:inline-flex">
 				<Icon name="download" size={16} />
-				Download
+				{t('nav.download')}
 			</a>
 			<button
 				type="button"
@@ -80,13 +83,13 @@
 						class="flex items-center justify-between rounded-lg px-3 py-2.5 text-[var(--color-ink-soft)] hover:bg-white/5"
 						onclick={() => (open = false)}
 					>
-						{l.label}
+						{t(l.key)}
 						{#if l.external}<Icon name="external" size={14} stroke={1.8} class="opacity-50" />{/if}
 					</a>
 				{/each}
 				<a href="{base}/#download" class="btn btn-primary mt-2 text-sm" onclick={() => (open = false)}>
 					<Icon name="download" size={16} />
-					Download
+					{t('nav.download')}
 				</a>
 			</div>
 		</div>

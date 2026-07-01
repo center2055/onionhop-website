@@ -5,56 +5,21 @@
 	import LiveStats from '$lib/components/LiveStats.svelte';
 	import Downloads from '$lib/components/Downloads.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
+	import { t } from '$lib/i18n/locale.svelte.js';
 	import { GITHUB_URL, VIDEO_EMBED } from '$lib/config.js';
 
 	let lightbox = $state(null);
 
 	const features = [
-		{
-			icon: 'route',
-			title: 'Proxy mode',
-			body: 'Route traffic through Tor with a local SOCKS proxy. Lightweight, no admin rights required.'
-		},
-		{
-			icon: 'globe',
-			title: 'TUN / VPN mode',
-			body: 'Send every app system-wide through Tor, not just your browser. One switch, whole machine.'
-		},
-		{
-			icon: 'split',
-			title: 'Split tunneling',
-			body: 'Choose which apps go through Tor and which connect directly. Hybrid routing, your rules.'
-		},
-		{
-			icon: 'spark',
-			title: 'Smart Connect',
-			body: 'Automatically picks the best engine, bridges and route for the network you are on.'
-		},
-		{
-			icon: 'bridge',
-			title: 'Bridges & transports',
-			body: 'obfs4, snowflake, webtunnel, conjure, meek and dnstt to get through restrictive networks.'
-		},
-		{
-			icon: 'layers',
-			title: 'Country & site routing',
-			body: 'Keep whole countries direct or block domain categories by IP, with auto-updating lists.'
-		},
-		{
-			icon: 'power',
-			title: 'Kill switch',
-			body: 'If Tor drops, outbound traffic is blocked instantly so nothing slips out unprotected.'
-		},
-		{
-			icon: 'dns',
-			title: 'DNS controls',
-			body: 'Force DNS through Tor and stop lookups leaking to your ISP. QUIC/UDP leak protection too.'
-		},
-		{
-			icon: 'terminal',
-			title: 'CLI companion',
-			body: 'A headless command-line client for servers, scripts and automation. Same engine, no GUI.'
-		}
+		{ icon: 'route', tk: 'feat.proxy.t', bk: 'feat.proxy.b' },
+		{ icon: 'globe', tk: 'feat.tunvpn.t', bk: 'feat.tunvpn.b' },
+		{ icon: 'split', tk: 'feat.split.t', bk: 'feat.split.b' },
+		{ icon: 'spark', tk: 'feat.smart.t', bk: 'feat.smart.b' },
+		{ icon: 'bridge', tk: 'feat.bridges.t', bk: 'feat.bridges.b' },
+		{ icon: 'layers', tk: 'feat.geo.t', bk: 'feat.geo.b' },
+		{ icon: 'power', tk: 'feat.kill.t', bk: 'feat.kill.b' },
+		{ icon: 'dns', tk: 'feat.dns.t', bk: 'feat.dns.b' },
+		{ icon: 'terminal', tk: 'feat.cli.t', bk: 'feat.cli.b' }
 	];
 
 	const engines = [
@@ -70,8 +35,8 @@
 	];
 
 	const shots = [
-		{ src: `${base}/GUI.png`, alt: 'OnionHop desktop app', label: 'Desktop app' },
-		{ src: `${base}/cli.png`, alt: 'OnionHop command-line client', label: 'Command line' }
+		{ src: `${base}/GUI.png`, alt: 'OnionHop desktop app', labelKey: 'shots.desktop' },
+		{ src: `${base}/cli.png`, alt: 'OnionHop command-line client', labelKey: 'shots.cli' }
 	];
 </script>
 
@@ -90,21 +55,18 @@
 	<div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
 		<div class="rise">
 			<h1 class="text-[2.6rem] font-bold leading-[1.05] sm:text-6xl">
-				Route your traffic through <span class="text-[var(--color-brand-400)]">Tor</span>, with
-				clear controls.
+				{t('hero.title')}
 			</h1>
 			<p class="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-				OnionHop is a privacy-first desktop client. Pick a lightweight proxy or route your whole
-				system, turn on bridges for restrictive networks, and keep leaks in check — all from a clean
-				cross-platform app.
+				{t('hero.subtitle')}
 			</p>
 
 			<div class="mt-7 flex flex-wrap items-center gap-3">
 				<a href="#download" class="btn btn-primary text-base">
-					<Icon name="download" size={18} /> Download latest
+					<Icon name="download" size={18} /> {t('hero.download')}
 				</a>
 				<a href={GITHUB_URL} target="_blank" rel="noreferrer" class="btn btn-ghost text-base">
-					<Icon name="github" size={18} /> View on GitHub
+					<Icon name="github" size={18} /> {t('hero.github')}
 				</a>
 			</div>
 
@@ -134,7 +96,7 @@
 						class="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/25 group-hover:opacity-100"
 					>
 						<span class="flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-sm font-medium text-black">
-							<Icon name="expand" size={15} stroke={2} /> Expand
+							<Icon name="expand" size={15} stroke={2} /> {t('shots.expand')}
 						</span>
 					</span>
 				</button>
@@ -151,10 +113,9 @@
 <!-- ===================== FEATURES ===================== -->
 <section id="features" class="mx-auto max-w-6xl px-5 py-16 sm:px-6">
 	<div class="max-w-2xl">
-		<h2 class="text-3xl font-bold sm:text-4xl">Built for restrictive networks</h2>
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('feat.heading')}</h2>
 		<p class="mt-3 text-lg text-[var(--color-ink-soft)]">
-			Everything you need to route, censor-proof and lock down your connection — without the
-			guesswork.
+			{t('feat.subtitle')}
 		</p>
 	</div>
 
@@ -166,8 +127,8 @@
 				>
 					<Icon name={f.icon} size={22} />
 				</span>
-				<h3 class="mt-4 text-[1.05rem] font-semibold text-[var(--color-ink)]">{f.title}</h3>
-				<p class="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-soft)]">{f.body}</p>
+				<h3 class="mt-4 text-[1.05rem] font-semibold text-[var(--color-ink)]">{t(f.tk)}</h3>
+				<p class="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-soft)]">{t(f.bk)}</p>
 			</div>
 		{/each}
 	</div>
@@ -178,12 +139,10 @@
 	<div class="card overflow-hidden">
 		<div class="grid items-center gap-8 p-8 sm:p-10 lg:grid-cols-2">
 			<div>
-				<span class="chip mb-4"><Icon name="bridge" size={14} /> Censorship circumvention</span>
-				<h2 class="text-2xl font-bold sm:text-3xl">When Tor itself is blocked, bridges get you through.</h2>
+				<span class="chip mb-4"><Icon name="bridge" size={14} /> {t('bridges.badge')}</span>
+				<h2 class="text-2xl font-bold sm:text-3xl">{t('bridges.heading')}</h2>
 				<p class="mt-4 leading-relaxed text-[var(--color-ink-soft)]">
-					A built-in bridge scanner finds working bridges and tests them from your network, so you
-					are not pasting lines by hand. Switch pluggable transports with a click, or let Smart
-					Connect race them and pick the one that connects.
+					{t('bridges.body')}
 				</p>
 				<div class="mt-6 flex flex-wrap gap-2">
 					{#each transports as t}
@@ -201,9 +160,9 @@
 <!-- ===================== SCREENSHOTS + VIDEO ===================== -->
 <section id="screenshots" class="mx-auto max-w-6xl px-5 py-16 sm:px-6">
 	<div class="max-w-2xl">
-		<h2 class="text-3xl font-bold sm:text-4xl">See it in action</h2>
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('shots.heading')}</h2>
 		<p class="mt-3 text-lg text-[var(--color-ink-soft)]">
-			A focused desktop app and a matching command-line client — same engine underneath.
+			{t('shots.subtitle')}
 		</p>
 	</div>
 
@@ -212,7 +171,7 @@
 			<button
 				class="card group relative block overflow-hidden p-2 text-left"
 				onclick={() => (lightbox = s.src)}
-				aria-label={`Expand ${s.label} screenshot`}
+				aria-label={`${t('shots.expand')} — ${t(s.labelKey)}`}
 			>
 				<img
 					src={s.src}
@@ -220,12 +179,12 @@
 					class="w-full rounded-[0.9rem] border border-[var(--color-line)]"
 					loading="lazy"
 				/>
-				<span class="absolute left-4 top-4 chip bg-[var(--color-canvas)]/80 backdrop-blur">{s.label}</span>
+				<span class="absolute start-4 top-4 chip bg-[var(--color-canvas)]/80 backdrop-blur">{t(s.labelKey)}</span>
 				<span
 					class="absolute inset-2 flex items-center justify-center rounded-[0.9rem] bg-black/0 opacity-0 transition-all group-hover:bg-black/25 group-hover:opacity-100"
 				>
 					<span class="flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-sm font-medium text-black">
-						<Icon name="expand" size={15} stroke={2} /> Expand
+						<Icon name="expand" size={15} stroke={2} /> {t('shots.expand')}
 					</span>
 				</span>
 			</button>
@@ -250,7 +209,7 @@
 	<div class="grid gap-4 md:grid-cols-3">
 		<div class="card p-6">
 			<h3 class="text-[0.8rem] font-semibold uppercase tracking-wider text-[var(--color-muted)]">
-				Tor engines
+				{t('blocks.engines')}
 			</h3>
 			<ul class="mt-3 space-y-2">
 				{#each engines as e}
@@ -262,7 +221,7 @@
 							class="group flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-brand-300)]"
 						>
 							<Icon name="check" size={16} class="text-[var(--color-brand-400)]" />{e.label}
-							<Icon name="external" size={12} stroke={1.8} class="ml-auto opacity-40 transition-opacity group-hover:opacity-80" />
+							<Icon name="external" size={12} stroke={1.8} class="ms-auto opacity-40 transition-opacity group-hover:opacity-80" />
 						</a>
 					</li>
 				{/each}
@@ -270,7 +229,7 @@
 		</div>
 		<div class="card p-6">
 			<h3 class="text-[0.8rem] font-semibold uppercase tracking-wider text-[var(--color-muted)]">
-				Pluggable transports
+				{t('blocks.transports')}
 			</h3>
 			<div class="mt-3 flex flex-wrap gap-2">
 				{#each transports as t}<span class="chip text-[var(--color-ink-soft)]">{t}</span>{/each}
@@ -278,7 +237,7 @@
 		</div>
 		<div class="card p-6">
 			<h3 class="text-[0.8rem] font-semibold uppercase tracking-wider text-[var(--color-muted)]">
-				Platforms
+				{t('blocks.platforms')}
 			</h3>
 			<ul class="mt-3 space-y-2">
 				{#each platforms as p}
@@ -294,9 +253,9 @@
 <!-- ===================== DOWNLOAD ===================== -->
 <section id="download" class="mx-auto max-w-6xl px-5 py-16 sm:px-6">
 	<div class="max-w-2xl">
-		<h2 class="text-3xl font-bold sm:text-4xl">Download OnionHop</h2>
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('dl.heading')}</h2>
 		<p class="mt-3 text-lg text-[var(--color-ink-soft)]">
-			Latest release, straight from GitHub. Installers and portable builds for every platform.
+			{t('dl.subtitle')}
 		</p>
 	</div>
 	<div class="mt-10"><Downloads /></div>
