@@ -1,18 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 548" font-family="'SF Mono', ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace" xml:space="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 432" font-family="'SF Mono', ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace" xml:space="preserve">
   <defs>
     <style>
       .p { fill: #a78bfa; }
       .m { fill: #838b98; }
       .w { fill: #e9ecf3; }
-      .c { fill: #22d3ee; }
-      .g { fill: #4ade80; }
+      .c { fill: #c4b5fd; }
       text { font-size: 15px; }
     </style>
   </defs>
 
   <!-- window -->
-  <rect x="8" y="8" width="804" height="532" rx="13" fill="#12151b" stroke="#262b35" stroke-width="1"/>
-  <!-- title bar -->
+  <rect x="8" y="8" width="804" height="416" rx="13" fill="#12151b" stroke="#262b35" stroke-width="1"/>
   <rect x="8" y="8" width="804" height="40" rx="13" fill="#15181e"/>
   <rect x="8" y="34" width="804" height="14" fill="#15181e"/>
   <circle cx="32" cy="28" r="6" fill="#ff5f57"/>
@@ -21,7 +19,7 @@
   <text x="410" y="33" text-anchor="middle" class="m" font-size="13">onionhop — command line</text>
   <line x1="8" y1="48" x2="812" y2="48" stroke="#262b35" stroke-width="1"/>
 
-  <!-- banner -->
+  <!-- real startup banner -->
   <g class="p">
     <text x="30" y="82">   ___       _          _  _</text>
     <text x="30" y="102">  / _ \ _ _ (_)___ _ _ | || |___ _ __</text>
@@ -29,23 +27,21 @@
     <text x="30" y="142">  \___/|_||_|_\___/_||_|_||_\___/ .__/</text>
     <text x="30" y="162">                                |_|    command line</text>
   </g>
-  <text x="30" y="190" class="m">OnionHop CLI v3.4.5  —  route traffic through Tor</text>
+  <text x="46" y="190"><tspan class="w">OnionHop CLI v3.4.5</tspan><tspan class="m">  -  route traffic through Tor</tspan></text>
 
-  <!-- session -->
-  <text x="30" y="228"><tspan class="p">onionhop&gt;</tspan><tspan class="w"> connect</tspan></text>
-  <text x="30" y="252" class="m">  • Smart Connect: analyzing your network…</text>
-  <text x="30" y="272" class="m">  • engine=classic   mode=proxy   bridges=auto</text>
-  <text x="30" y="292" class="c">  • Bootstrapped 100%  —  connected</text>
-  <text x="30" y="312" class="g">  ✓ Tor is up · SOCKS 127.0.0.1:9050</text>
+  <!-- quick start -->
+  <text x="30" y="228" class="w">Quick start:</text>
+  <text x="46" y="254" class="c">connect</text>
+  <text x="280" y="254" class="m">smart-connect to Tor (auto-picks the best route)</text>
+  <text x="46" y="276" class="c">status</text>
+  <text x="280" y="276" class="m">show the live connection dashboard</text>
+  <text x="46" y="298" class="c">watch</text>
+  <text x="280" y="298" class="m">continuously monitor the connection</text>
+  <text x="46" y="320" class="c">scan obfs4</text>
+  <text x="280" y="320" class="m">find which obfs4 bridges are reachable from here</text>
+  <text x="46" y="342" class="c">help</text>
+  <text x="280" y="342" class="m">full command reference</text>
 
-  <text x="30" y="348"><tspan class="p">onionhop&gt;</tspan><tspan class="w"> status</tspan></text>
-  <text x="30" y="372" class="w">  Circuit    guard → middle → exit <tspan class="m">(nl)</tspan></text>
-  <text x="30" y="392" class="w">  Exit IP    185.220.101.34</text>
-  <text x="30" y="412" class="w">  Uptime     00:03:11</text>
-
-  <text x="30" y="448"><tspan class="p">onionhop&gt;</tspan><tspan class="w"> scan obfs4</tspan></text>
-  <text x="30" y="472" class="m">  probing 40 obfs4 bridges …</text>
-  <text x="30" y="492" class="g">  ✓ 31 reachable   ·   fastest 46 ms</text>
-
-  <text x="30" y="522"><tspan class="p">onionhop&gt;</tspan><tspan class="w"> </tspan><tspan fill="#a78bfa">▍</tspan></text>
+  <!-- prompt -->
+  <text x="30" y="384"><tspan class="p">onionhop&gt;</tspan><tspan class="w"> </tspan><tspan class="p">▍</tspan></text>
 </svg>

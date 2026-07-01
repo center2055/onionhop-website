@@ -151,7 +151,7 @@
 			>
 		</div>
 
-		<div class="mt-4 flex-1 divide-y divide-[var(--color-line)]">
+		<div class="mt-4 flex-1 space-y-1">
 			{#if !releaseState.loaded}
 				{#each Array(4) as _}
 					<div class="flex items-center gap-3 py-3">
@@ -169,10 +169,10 @@
 				{#each filtered as a}
 					<a
 						href={a.url}
-						class="group flex items-center gap-3 py-3 transition-colors hover:bg-white/[0.02]"
+						class="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-colors duration-150 hover:border-[var(--color-line)] hover:bg-[var(--color-surface-2)]"
 					>
 						<span
-							class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-ink-soft)]"
+							class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-2)] text-[var(--color-ink-soft)] transition-colors group-hover:border-[var(--color-brand-500)] group-hover:text-[var(--color-brand-300)]"
 						>
 							<Icon name={platIcon[a.meta.platform] || 'download'} size={16} />
 						</span>
@@ -185,7 +185,7 @@
 						<Icon
 							name="arrowDown"
 							size={16}
-							class="text-[var(--color-muted)] transition-colors group-hover:text-[var(--color-brand-400)]"
+							class="shrink-0 text-[var(--color-muted)] transition-all duration-150 group-hover:translate-y-0.5 group-hover:text-[var(--color-brand-400)]"
 						/>
 					</a>
 				{/each}
